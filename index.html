@@ -3,14 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ParcelFLow 2.0</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Parcel Flow 2.0</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
-    <h1>parcelFLow 2.0</h1>
+  <main class="app-shell">
+    <section class="hero-card">
+      <div>
+        <p class="eyebrow">OCR logistics assistant</p>
+        <h1>Parcel Flow 2.0</h1>
+        <p class="subtitle">
+          Upload bills of lading, review detected fields, and prepare structured data for your workflow.
+        </p>
+      </div>
+      <div class="status-pill">
+        <span class="dot"></span>
+        Demo mode
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="upload-panel card">
+        <h2>Documents</h2>
+        <p class="muted">PDF, JPG, or PNG bills of lading</p>
+
+        <label class="dropzone" for="fileInput">
+          <input id="fileInput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png" />
+          <span class="upload-icon">⇧</span>
+          <strong>Upload your files</strong>
+          <small>Click to browse or drag files here</small>
+        </label>
+
+        <div class="file-list" id="fileList">
+          <button class="file-item active" data-name="bill1.pdf">bill1.pdf</button>
+          <button class="file-item" data-name="bill2.pdf">bill2.pdf</button>
+          <button class="file-item" data-name="bill3.pdf">bill3.pdf</button>
+        </div>
+      </aside>
+
+      <section class="preview-panel card">
+        <div class="panel-header">
+          <div>
+            <h2 id="currentFile">bill1.pdf</h2>
+            <p class="muted">Document preview</p>
+          </div>
+          <button class="secondary-btn" id="processBtn">Run OCR</button>
+        </div>
+
+        <div class="document-preview">
+          <div class="paper">
+            <div class="paper-line w-90"></div>
+            <div class="paper-line w-70"></div>
+            <div class="paper-grid">
+              <div></div><div></div>
+              <div></div><div></div>
+              <div></div><div></div>
+            </div>
+            <div class="paper-line w-80"></div>
+            <div class="paper-line w-65"></div>
+            <div class="ocr-box box-shipper">SHIPPER</div>
+            <div class="ocr-box box-bol">BOL #</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="results-panel card">
+        <div class="panel-header">
+          <div>
+            <h2>Extracted fields</h2>
+            <p class="muted">Review before export</p>
+          </div>
+          <span class="confidence">94%</span>
+        </div>
+
+        <form class="field-form">
+          <label>
+            Shipper
+            <input id="shipper" type="text" value="Northline Manufacturing" />
+          </label>
+          <label>
+            Ship from
+            <input id="shipFrom" type="text" value="Monterrey, NL" />
+          </label>
+          <label>
+            BOL number(s)
+            <input id="bol" type="text" value="BOL-10482" />
+          </label>
+          <label>
+            3rd party
+            <input id="thirdParty" type="text" value="Central Transport" />
+          </label>
+          <label>
+            PO number(s)
+            <input id="po" type="text" value="PO-77821" />
+          </label>
+        </form>
+
+        <div class="actions">
+          <button class="primary-btn" id="exportBtn">Export row</button>
+          <button class="secondary-btn" id="clearBtn">Clear</button>
+        </div>
+      </aside>
+    </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-   <!-- v2 -->
